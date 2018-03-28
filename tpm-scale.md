@@ -56,7 +56,7 @@ The optimum can then be optained iteratively, according to the update scheme:
 
 $$\mathbf{w}^{(n+1)} = \mathbf{w}^{(n)} - \left[\mathbf{H}^{(n)}\right]^{-1} \mathbf{g}^{(n)}$$
 
-- [Derivatives were obtained with Matlab's symbolic toolbox and expained here](tpm-scale-deriv-ml)
+- [Derivatives were obtained with Matlab's symbolic toolbox and expained here]({{ site.baseurl }}/tpm-scale-deriv-ml)
 
 ---
 Created by Yaël Balbastre on 27 March 2018.
