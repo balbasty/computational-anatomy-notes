@@ -9,6 +9,7 @@ description:         'Notes on Bayesian segmentation and registration models.'
 url:                 'https://balbasty.github.io'
 baseurl:             '/computational-anatomy-notes'
 paginate:            5
+plugins:             [jekyll-paginate]
 
 # About/contact
 author:
