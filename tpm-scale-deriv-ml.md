@@ -7,7 +7,7 @@ mathjax: true
 Scaling tissue probability maps - Derivations
 =============================================
 
-This section refers to the main article [Scaling tissue probability maps](tpm-scale).
+This section refers to the main article [Scaling tissue probability maps]({{ site.baseurl }}/tpm-scale).
 Let's use Matlab's symblic toolbox to differentiates our objective functions.
 
 Maximum Likelihood
