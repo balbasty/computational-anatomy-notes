@@ -6,7 +6,7 @@ Scaling tissue probability maps
 Context
 -------
 
-Tissue probability maps (TPMs), or _templates_, encode the prior probability of each voxel in an image to belong to one of $K$ classes. Typically, they reflect the proportion of subjects, in the general population, that show a given class in a given location. These TPMs play a crucial role in segmentation models as they provide *local* prior information about class probability, thus helping regularise the segmentation in an anatomical way. TPMs are aligned to each observed brain and deformed to match as well as possible their anatomy[^registration]. The following figure shows a brain image along with the true labels and the deformed template (each color represents one class, mixed colors correspond to class probabilities):
+Tissue probability maps (TPMs), or _templates_, encode the prior probability of each voxel in an image to belong to one of \(K\) classes. Typically, they reflect the proportion of subjects, in the general population, that show a given class in a given location. These TPMs play a crucial role in segmentation models as they provide *local* prior information about class probability, thus helping regularise the segmentation in an anatomical way. TPMs are aligned to each observed brain and deformed to match as well as possible their anatomy[^registration]. The following figure shows a brain image along with the true labels and the deformed template (each color represents one class, mixed colors correspond to class probabilities):
 
 [^registration]: We do not tackle the issue of deforming TPMs in this article. It may be done beforehand or, more consistantly, at the same time as the segmentation in an iterative fashion.
 
@@ -15,7 +15,7 @@ In the best case scenario, the deformed TPMs would match almost exactly the true
 Formal writing
 --------------
 
-Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yield: \(\mathbf{z} = \left[ z_i^{(k)} \in \left\{0,1\right\} ~\middle|~  i \in 1\dots I ~;~ k \in 1\dots K \right]\), where \(i\) indexes voxels and \(k\) indexes classes. In a similar fashion, we write the template as a series of probability images: \(\boldsymbol{\mu} = \left[ \mu_i^{(k)} \in \left[0,1\right] ~\middle|~  i \in 1\dots I ~;~ k \in 1\dots K \right]\). The idea is to find a series of factors, \(w_k\), so that prior probabilities become:
+Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yield: \(\mathbf{z} = \left[z_i^{(k)} \in \left\{0,1\right\} ~\middle|~  i \in 1\dots I ~;~ k \in 1\dots K \right]\), where \(i\) indexes voxels and \(k\) indexes classes. In a similar fashion, we write the template as a series of probability images: \(\boldsymbol{\mu} = \left[\mu_i^{(k)} \in \left[0,1\right] ~\middle|~  i \in 1\dots I ~;~ k \in 1\dots K \right]\). The idea is to find a series of factors, \(w_k\), so that prior probabilities become:
 
 $$p_i^{(k)} = \frac{w_k\mu_i^{(k)}}{\sum_{l=1}^K w_l\mu_i^{(l)}}$$
 
