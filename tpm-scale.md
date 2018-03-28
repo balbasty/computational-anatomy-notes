@@ -11,19 +11,22 @@ Tissue probability maps (TPMs), or *templates*, encode the prior probability of 
 
 [^registration]: We do not tackle the issue of deforming TPMs in this article. It may be done beforehand or, more consistantly, at the same time as the segmentation in an iterative fashion.
 
-**INCLUDE A FIGURE HERE**
+<figure>
+<img src="{{site.baseurl}}/images/tpm-scale/input.png" alt="Labels and template" />
+<figcaption><b>Figure 1.</b> A brain MR image, the corresponding true labels and the warped TPMs.</figcaption>
+</figure>
 
-In the best case scenario, the deformed TPMs would match almost exactly the true labels. However, because deformations are not entirely *free* (*i.e.*, they must be smooth), there is often some kind of leeway, especially if the observed image possess an unusual anatomy (as might be the case if it is pathological). In this case, an issue is that the global expected class proportions in the template might be different from the actual class proportion, and thus bias the segmentation. In the above exemple, the expected tissue proportions, are [x y z] whereas the true proportion is [x' y' z']. Consequently, it is necessary to modulate the TPMs to change the global expected class proportion.
+In the best case scenario, the deformed TPMs would match almost exactly the true labels. However, because deformations are not entirely *free* (*i.e.*, they must be smooth), there is often some kind of leeway, especially if the observed image possess an unusual anatomy (as might be the case if it is pathological). In this case, an issue is that the global expected class proportions in the template might be different from the actual class proportion, and thus bias the segmentation. In the above exemple, the expected tissue proportions, are [0.21 0.19 0.60] whereas the true proportion is [0.21 0.20 0.59]. Consequently, it is necessary to modulate the TPMs to change the global expected class proportion.
 
 ### When is it useful
 
-- **When the alignement procedure has low flexibility.** Typically, if only an affine transform is used, there is no chance that it may compensante for differences in gray matter volume. In this case, it is important to rescale the TPMs to avoid biasing the segmentation.
+- **When the alignement procedure has low flexibility.** Typically, if only an affine transform is used, there is no chance that it may compensate for differences in gray matter volume. In this case, it is important to rescale the TPMs to avoid biasing the segmentation.
 - **When the subject is very pathological.** In this case, even with a very flexible deformation model (such as diffeomorphisms), it is possible that TPMs cannot match the subject well enough, and thus that expected proportions are not perfectly suited.
 
 Formal writing
 --------------
 
-Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yield: $\mathbf{z} = \left[z_i^{(k)} \in \left\\{0,1\right\\} \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$, where $i$ indexes voxels and $k$ indexes classes. In a similar fashion, we write the template as a series of probability images: $\boldsymbol{\mu} = \left[\mu_i^{(k)} \in \left[0,1\right] \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$. The idea is to find a series of factors, $w_k$, so that prior probabilities become:
+Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yields: $\mathbf{z} = \left[z_i^{(k)} \in \left\\{0,1\right\\} \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$, where $i$ indexes voxels and $k$ indexes classes. In a similar fashion, we write the template as a series of probability images: $\boldsymbol{\mu} = \left[\mu_i^{(k)} \in \left[0,1\right] \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$. The idea is to find a series of factors, $w_k$, so that prior probabilities become:
 
 $$p_i^{(k)} = \frac{w_k\mu_i^{(k)}}{\sum_{l=1}^K w_l\mu_i^{(l)}} \Leftrightarrow \mathbf{p}_i = \mathrm{softmax}\left(\mathrm{diag}(\mathbf{w}) \boldsymbol{\mu}_i\right)$$
 
