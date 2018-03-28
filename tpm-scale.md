@@ -16,7 +16,7 @@ In the best case scenario, the deformed TPMs would match almost exactly the true
 Formal writing
 --------------
 
-Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yield: \\(\mathbf{z} = \left[z_i^{(k)} \in \left\\{0,1\right\\} \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]\\), where \\(i\\) indexes voxels and \\(k\\) indexes classes. In a similar fashion, we write the template as a series of probability images: \\(\boldsymbol{\mu} = \left[\mu_i^{(k)} \in \left[0,1\right] \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]\\). The idea is to find a series of factors, \\(w_k\\), so that prior probabilities become:
+Let us write the true labels as a series of binary images, each acting as a mask of voxels belonging to one class. In vector form, this yield: $\mathbf{z} = \left[z_i^{(k)} \in \left\\{0,1\right\\} \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$, where $i$ indexes voxels and $k$ indexes classes. In a similar fashion, we write the template as a series of probability images: $\boldsymbol{\mu} = \left[\mu_i^{(k)} \in \left[0,1\right] \mid  i \in 1\dots I ~;~ k \in 1\dots K \right]$. The idea is to find a series of factors, $w_k$, so that prior probabilities become:
 
 $$p_i^{(k)} = \frac{w_k\mu_i^{(k)}}{\sum_{l=1}^K w_l\mu_i^{(l)}}$$
 
@@ -44,7 +44,7 @@ Differentiating with respect to the weights yield:
 
 $$\mathbf{g} = \sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}} - \mathrm{diag}(\mathbf{w})^{-1}\left(\sum_{i=1}^I\mathbf{z}_i\right)$$
 
-Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's *Unified Segmentation* ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume \\(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\\) constant (*i.e.*, it keeps a previous value), yielding:
+Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's *Unified Segmentation* ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume $\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}$ constant (*i.e.*, it keeps a previous value), yielding:
 
 $$\tilde{\mathbf{w}} = \mathrm{diag}\left(\sum_{i=1}^I\mathbf{z}_i\right)^{-1}\left(\sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}}\right)$$
 
@@ -57,6 +57,17 @@ The optimum can then be optained iteratively, according to the update scheme:
 $$\mathbf{w}^{(n+1)} = \mathbf{w}^{(n)} - \left[\mathbf{H}^{(n)}\right]^{-1} \mathbf{g}^{(n)}$$
 
 - [Derivatives were obtained with Matlab's symbolic toolbox and expained here]({{ site.baseurl }}/tpm-scale-deriv-ml)
+
+Conjugate prior
+---------------
+
+Let us try to find a prior probability distribution on the weights that would make the posterior distribution tractable. First, it needs to be defined on $\mathbb{R}^+$. Second, by applying Bayes' rule, the posterior can be written as:
+
+$$p(\mathbf{w} \mid \mathbf{z}, \boldsymbol{\mu}) \propto p(\mathbf{z}, \mid \mathbf{w}, \boldsymbol{\mu}) p(\mathbf{w} \mid \boldsymbol{\mu})$$
+
+Note than we have used $\boldsymbol{\mu}$ as a parameter throughout. Consequently, a conjugate prior would have the same functional form with respect to $\mathbf{w}$ as the conditional probability, *i.e.*:
+
+$$\ln p(\mathbf{w} \mid \boldsymbol{\mu}) = \sum_{k=1}^K \alpha_k \ln w_k - \sum_i \beta \ln\left(\sum_{k=1}^K w_k \mu_i^{(k)}\right)$$
 
 ---
 Created by Yaël Balbastre on 27 March 2018.
