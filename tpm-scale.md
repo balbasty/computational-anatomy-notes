@@ -1,3 +1,7 @@
+---
+layout: default
+title:  Scaling tissue probability maps
+---
 {% include lib/mathjax.html %}
 
 Scaling tissue probability maps
