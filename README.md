@@ -12,6 +12,7 @@ Just use GitHub's editor to modify the markdown pages. Because of Mathjax, a few
 - Underscores (`_`) are used both in Tex formulas (to indicate underscripts: `x_i`) and in Markdown (to indicate emphasis: `_important_`). It is thus advised to rather use asteriks (`*`) rather than underscores to indicate emphasis in Markdown (`*important*`).
 - Use double dollars (`$$x = 0$$`) around displayed (*i.e.*, centered) equations and single dollars (`$x = 0$`) around inine equations.
 - As a result, avoid using dollars in your text! If it is necessary, you should escape them (`\$`).
+- Avoid using a veritcal bar (`|`) in math mode. This is quite annoying as it is needed for KL divergences and (some) conditional probabilities. I haven't find a solution yet.
 
 ## How to add pages
 
