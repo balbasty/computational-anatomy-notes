@@ -16,3 +16,11 @@ author:
   url:               'https://github.com/balbasty'
   email:             'y.balbastre@ucl.ac.uk'
 
+# Syntax highlighting
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
