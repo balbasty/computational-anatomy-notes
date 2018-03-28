@@ -41,7 +41,7 @@ Now, let's write the **negative**[^negativell] log-likelihood and differentiate:
 
 [^negativell]: We use the negative log-likelihood so that the optimisation problem is a **minimisation** problem. Both are equivalent: we place ourselves in a minimisation framework by convention.
 
-```matlab=+
+```matlab
 L = - z.' * log(w) + s1*log(w.'*m1) + s2*log(w.'*m2);
 
 pretty(simplify(diff(L, sym('w1'))))               % gradient
@@ -61,7 +61,7 @@ pretty(simplify(diff(L, sym('w1'), sym('w1'))))    % Hessian (diagonal)
   2                             2                             2
 w1    (m11 w1 + m12 w2 + m13 w3)    (m21 w1 + m22 w2 + m23 w3)
 ```
-```matlab=+
+```matlab
 pretty(simplify(diff(L, sym('w1'), sym('w2'))))    % Hessian (off-diagonal)
 ```
 ```
@@ -78,13 +78,13 @@ and the Hessian as:
 $$\mathbf{H} = \mathrm{diag}\left(\mathrm{diag}(\mathbf{w})^{-2}\left(\sum_{i=1}^I\mathbf{z}_i\right)\right) - \sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i \boldsymbol{\mu}_i^{\mathrm{T}}}{\left(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\right)^2}$$
 
 Let us check that with the symbolic toolbox. The equivalent Matlab code is:
-```matlab=
+```matlab
 g = -z./w + s1*m1/(m1.'*w) + s2*m2/(m2.'*w);
 H = diag(z./(w.^2)) - s1*(m1*m1.')/(m1.'*w)^2 - s2*(m2*m2.')/(m2.'*w)^2;
 
 ```
 And if we compare with the automatic differentiation:
-```matlab=+
+```matlab
 check_g1  = simplify(g(1) - diff(L, sym('w1')), 1000)
 ```
 ```
@@ -92,7 +92,7 @@ check_g1 =
 
 0
 ```
-```matlab=+
+```matlab
 check_h11 = simplify(H(1,1) - diff(L, sym('w1'), sym('w1')), 1000)
 ```
 ```
@@ -100,7 +100,7 @@ check_h11 =
 
 0
 ```
-```matlab=+
+```matlab
 check_h12 = simplify(H(1,2) - diff(L, sym('w1'), sym('w2')), 1000)
 ```
 ```
@@ -110,7 +110,7 @@ check_h12 =
 ```
 
 You could ask if a closed form solution to $\mathbf{g} = \mathbf{0}$ exists, which would make the Hessian unneeded. Let us try to find a solution with the symbolic toolbox:
-```matlab=+
+```matlab
 solve(g, w)
 ```
 ```
