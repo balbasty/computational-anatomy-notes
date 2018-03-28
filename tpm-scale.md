@@ -1,8 +1,8 @@
 ---
-layout: page
-title:  Scaling tissue probability maps
+layout:  page
+title:   Scaling tissue probability maps
+mathjax: true
 ---
-{% include lib/mathjax.html %}
 
 Context
 -------
@@ -26,7 +26,7 @@ $$\forall i \in 1\dots I,~ p(\mathbf{z}_i \mid \boldsymbol{\mu}_i, \boldsymbol{w
 
 The conditional log-likelihood of the complete image can be written as:
 
-$$\begin{split}\mathcal{L} 
+$$\begin{split}\mathcal{L}
 & = \sum_{i=1}^I \sum_{k=1}^K \left[ z_i^{(k)}\left(\ln w_k + \ln \mu_i^{(k)} - \ln\left(\sum_{l=1}^Kw_l\mu_i^{(l)}\right)\right) \right] \\
 & = \sum_{k=1}^K \left[ \left(\sum_{i=1}^I z_i^{(k)}\right)\ln w_k  + \sum_{i=1}^I z_i^{(k)} \ln\mu_i^{(k)} \right] - \sum_{i=1}^I \left[ \left(\sum_{k=1}^K z_i^{(k)}\right) \ln\left(\sum_{l=1}^Kw_l\mu_i^{(l)}\right) \right]
 \end{split}$$
@@ -36,7 +36,7 @@ Maximum likelhood
 
 A first strategy is to find a *maximum likelihood* (ML) value for the weights, that is, the value that maximises the conditional log-likelihood[^log]:
 
-[^log]: Using the log-likelihood rather than the likelihood has several advantages. First, because the logarithm is strictly monotonic, a maximum of the log-likelihood is a maximum of the likelihood. Second, it transforms products in sums, often easing the differentiation. Third, it is a transform that is used to solve problems with hidden variables, along with the Expectation-Maximisation algorithm, because of its concavity. 
+[^log]: Using the log-likelihood rather than the likelihood has several advantages. First, because the logarithm is strictly monotonic, a maximum of the log-likelihood is a maximum of the likelihood. Second, it transforms products in sums, often easing the differentiation. Third, it is a transform that is used to solve problems with hidden variables, along with the Expectation-Maximisation algorithm, because of its concavity.
 
 $$\hat{\mathbf{w}} = \arg\!\min_{\mathbf{w}} -\sum_{i=1}^I \ln p(\mathbf{z}_i \mid \boldsymbol{\mu}_i, \boldsymbol{w})$$
 
@@ -55,6 +55,8 @@ $$\mathbf{H} = \mathrm{diag}\left(\mathrm{diag}(\mathbf{w})^{-2}\left(\sum_{i=1}
 The optimum can then be optained iteratively, according to the update scheme:
 
 $$\mathbf{w}^{(n+1)} = \mathbf{w}^{(n)} - \left[\mathbf{H}^{(n)}\right]^{-1} \mathbf{g}^{(n)}$$
+
+- [Derivatives were obtained with Matlab's symbolic toolbox and expained here](/tpm-scale-deriv-ml)
 
 ---
 Created by Yaël Balbastre on 27 March 2018.
