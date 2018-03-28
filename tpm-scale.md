@@ -1,3 +1,5 @@
+{% include lib/mathjax.html %}
+
 Scaling tissue probability maps
 ===============================
 
