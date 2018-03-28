@@ -1,6 +1,6 @@
 # Notes on Bayesian models for Computational Anatomy
 
-This website is aimed at keeping trace of notes on different modelling approaches that are used in unified models of segmentation and registration. I've tried to break down the model in small pieces in order to be able to focus on the aim and praactical implementation of each variable (it also leads to less cluttered notations). Obviously, when everyting is put together in the same model, there are some additional issues that arise ; in particular some variables that are assumed observed in the small pieces become latent variable, with a posterior distribution and thus uncertainty that must be taken into account.
+This website is aimed at keeping trace of notes on different modelling approaches that are used in unified models of segmentation and registration. I've tried to break down the model in small pieces in order to be able to focus on the aim and practical implementation of each variable (it also leads to less cluttered notations). Obviously, when everyting is put together in the same model, there are some additional issues that arise ; in particular some variables that are assumed observed in the small pieces become latent variable, with a posterior distribution and thus uncertainty that must be taken into account.
 
 ## Implementation
 
