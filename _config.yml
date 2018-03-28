@@ -6,8 +6,8 @@ permalink:           pretty
 # Setup
 title:               'Computational Anatomy notes'
 description:         'Notes on Bayesian segmentation and registration models.'
-url:                 'https://balbasty.github.io/computational-anatomy-notes/'
-baseurl:             ''
+url:                 'https://balbasty.github.io'
+baseurl:             '/computational-anatomy-notes'
 paginate:            5
 
 # About/contact
