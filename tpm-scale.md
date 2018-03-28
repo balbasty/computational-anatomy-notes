@@ -7,11 +7,11 @@ title:  Scaling tissue probability maps
 Context
 -------
 
-Tissue probability maps (TPMs), or _templates_, encode the prior probability of each voxel in an image to belong to one of \\(K\\) classes. Typically, they reflect the proportion of subjects, in the general population, that show a given class in a given location. These TPMs play a crucial role in segmentation models as they provide *local* prior information about class probability, thus helping regularise the segmentation in an anatomical way. TPMs are aligned to each observed brain and deformed to match as well as possible their anatomy[^registration]. The following figure shows a brain image along with the true labels and the deformed template (each color represents one class, mixed colors correspond to class probabilities):
+Tissue probability maps (TPMs), or *templates*, encode the prior probability of each voxel in an image to belong to one of $K$ classes. Typically, they reflect the proportion of subjects, in the general population, that show a given class in a given location. These TPMs play a crucial role in segmentation models as they provide *local* prior information about class probability, thus helping regularise the segmentation in an anatomical way. TPMs are aligned to each observed brain and deformed to match as well as possible their anatomy[^registration]. The following figure shows a brain image along with the true labels and the deformed template (each color represents one class, mixed colors correspond to class probabilities):
 
 [^registration]: We do not tackle the issue of deforming TPMs in this article. It may be done beforehand or, more consistantly, at the same time as the segmentation in an iterative fashion.
 
-In the best case scenario, the deformed TPMs would match almost exactly the true labels. However, because deformations are not entirely _free_ (_i.e._, they must be smooth), there is often some kind of leeway, especially if the observed image possess an unusual anatomy (as might be the case if it is pathological). In this case, an issue is that the global expected class proportions in the template might be different from the actual class proportion, and thus bias the segmentation. For exemle, in the above exemple, the expected tissue proportions, are [x y z] whereas the true proportion is [x' y' z']. Consequently, it is necessary to modulate the TPMs to change the global expected class proportion.
+In the best case scenario, the deformed TPMs would match almost exactly the true labels. However, because deformations are not entirely *free* (*i.e.*, they must be smooth), there is often some kind of leeway, especially if the observed image possess an unusual anatomy (as might be the case if it is pathological). In this case, an issue is that the global expected class proportions in the template might be different from the actual class proportion, and thus bias the segmentation. For exemle, in the above exemple, the expected tissue proportions, are [x y z] whereas the true proportion is [x' y' z']. Consequently, it is necessary to modulate the TPMs to change the global expected class proportion.
 
 Formal writing
 --------------
@@ -34,7 +34,7 @@ $$\begin{split}\mathcal{L}
 Maximum likelhood
 -----------------
 
-A first strategy is to find a _maximum likelihood_ (ML) value for the weights, that is, the value that maximises the conditional log-likelihood[^log]:
+A first strategy is to find a *maximum likelihood* (ML) value for the weights, that is, the value that maximises the conditional log-likelihood[^log]:
 
 [^log]: Using the log-likelihood rather than the likelihood has several advantages. First, because the logarithm is strictly monotonic, a maximum of the log-likelihood is a maximum of the likelihood. Second, it transforms products in sums, often easing the differentiation. Third, it is a transform that is used to solve problems with hidden variables, along with the Expectation-Maximisation algorithm, because of its concavity. 
 
@@ -44,7 +44,7 @@ Differentiating with respect to the weights yield:
 
 $$\mathbf{g} = \sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}} - \mathrm{diag}(\mathbf{w})^{-1}\left(\sum_{i=1}^I\mathbf{z}_i\right)$$
 
-Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's _Unified Segmentation_ ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume \\(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\\) constant (*i.e.*, it keeps a previous value), yielding:
+Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's *Unified Segmentation* ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume \\(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\\) constant (*i.e.*, it keeps a previous value), yielding:
 
 $$\tilde{\mathbf{w}} = \mathrm{diag}\left(\sum_{i=1}^I\mathbf{z}_i\right)^{-1}\left(\sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}}\right)$$
 
