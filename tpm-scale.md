@@ -47,7 +47,7 @@ Differentiating with respect to the weights yield:
 
 $$\mathbf{g} = \sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}} - \mathrm{diag}(\mathbf{w})^{-1}\left(\sum_{i=1}^I\mathbf{z}_i\right)$$
 
-Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's _Unified Segmentation_ ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume \(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\) constant (*i.e.*, it keeps a previous value), yielding:
+Sadly, this gradient cannot be solved in closed form. A first solution, used in Ashburner's _Unified Segmentation_ ([Ashburner and Friston, 2005](https://doi.org/10.1016/j.neuroimage.2005.02.018 "Persistent link using digital object identifier")), is to assume \\(\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}\\) constant (*i.e.*, it keeps a previous value), yielding:
 
 $$\tilde{\mathbf{w}} = \mathrm{diag}\left(\sum_{i=1}^I\mathbf{z}_i\right)^{-1}\left(\sum_{i=1}^I \left(\sum_{k=1}^K z_i^{(k)}\right) \frac{\boldsymbol{\mu}_i}{\boldsymbol{\mu}_i^{\mathrm{T}} \mathbf{w}}\right)$$
 
