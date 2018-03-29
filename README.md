@@ -4,7 +4,7 @@ This website is aimed at keeping trace of notes on different modelling approache
 
 ## Implementation
 
-I am using a GitHub page and its implicit [Jekyll](https://jekyllrb.com) machinerie to convert markdown files to webpages. The layout is a slightly modified version of [Lanyon](https://github.com/poole/lanyon). I've also hadded [Mathjax](https://www.mathjax.org) support in order to render equations.
+I am using a GitHub page and its implicit [Jekyll](https://jekyllrb.com) machinerie to convert markdown files to webpages. The layout is a slightly modified version of [Lanyon](https://github.com/poole/lanyon). I've also added [Mathjax](https://www.mathjax.org) support in order to render equations.
 
 ## How to modify pages?
 
