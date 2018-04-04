@@ -144,7 +144,7 @@ Here are four samples obtained from prior distributions with a varying $\lambda$
 
 On the continuum, this part of the energy can be written as:
 
-$$\mathcal{E} = \frac{\mu}{2} \int_\Omega \left[\frac{\partial v_x}{\partial c}(\mathbf{x})\right]\left[\frac{\partial v_y}{\partial y}(\mathbf{x})\right] \mathrm{d}\mathbf{x}$$
+$$\mathcal{E} = \frac{\mu}{2} \int_\Omega \left[\frac{\partial v_x}{\partial x}(\mathbf{x})\right]\left[\frac{\partial v_y}{\partial y}(\mathbf{x})\right] \mathrm{d}\mathbf{x}$$
 
 In discrete form, it can be obtained by "aligning" matrices that allows computing the gradient along each direction. The "divergence operator" matrix is shown in Figure 11.a, and the corresponding precision matrix is shown in Figure 11.b.
 
