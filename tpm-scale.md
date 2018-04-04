@@ -36,7 +36,7 @@ Here, we denote by *pnorm* the function that normalises discrete "probabilities"
 
 <figure>
 <img src="{{site.baseurl}}/images/tpm-scale/rescale.png" alt="Rescaled templates by 3 different factors." />
-<figcaption><b>Figure 2.</b> Recaling by three different factors that modulate the ammount of grey and white matter in the brain.</figcaption>
+<figcaption><b>Figure 2.</b> Rescaling by three different factors that modulate the ammount of grey and white matter in the brain.</figcaption>
 </figure>
 
 Formally, saying that these are probabilities of belonging to each class is equivalent to saying that they are parameters of a _Categorical_ distribution, from which stem the actual labels. We can thus write the conditonal probability:
@@ -130,6 +130,8 @@ Maximum *a posteriori*
 
 A MAP estimate can be obtained with the same methods as the ML estimate, since both objective functions have the same form. The only difference is that there might be some (hopefully very rare) cases where the posterior does not possess a mode. The expected value of our distribution being intractable, we have no choice but to resolve to a mode estimate.
 
----
-Created by Yaël Balbastre on 27 March 2018.
-Last edited on 29 March 2018.
+***
+
+*Created by Yaël Balbastre on 27 March 2018. Last edited on 29 March 2018.*
+
+***

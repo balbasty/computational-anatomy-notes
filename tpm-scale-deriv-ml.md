@@ -143,6 +143,8 @@ ans =
 
 Even in this very simple case, we cannot find a solution in closed form. As explained before, two solutions exist, either by keeping the denominator fixed, or by using a numerical optimisation procedure such as Gauss-Newton.
 
----
-Created by Yaël Balbastre on 27 March 2018.
-Last edited on 28 March 2018.
+***
+
+*Created by Yaël Balbastre on 27 March 2018. Last edited on 29 March 2018.*
+
+***
