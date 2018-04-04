@@ -7,12 +7,12 @@ mathjax: true
 Context
 -------
 
-In our generatives models, images are often assumed to stem from a multivariate Gaussian distributions, where the number of dimension is equal to the number of pixels or voxels in the image. In a Bayesian context, finding the optimal (deformation, velocity, probability, ...) field $\mathbf{y}$ given an observed image $\mathbf{x}$ consists of optimising the log probability:
+In our generatives models, images are often assumed to stem from a multivariate Gaussian distribution, where the number of dimension is equal to the number of pixels or voxels in the image. In a Bayesian context, finding the optimal (deformation, velocity, probability, ...) field $\mathbf{y}$ given an observed image $\mathbf{x}$ consists of optimising the log probability:
 
 $$\begin{split}\hat{\mathbf{y}} & = \arg\!\max_{\mathbf{y}} \overbrace{\ln p(\mathbf{x} \mid \mathbf{y})}^{\mathrm{similarity}} + \overbrace{\ln \mathcal{N}\left(\mathbf{y} \mid \mathbf{0}, \mathbf{L}^{-1}\right)}^{\mathrm{regularisation}} \\
 & = \arg\!\min_{\mathbf{y}} -\ln p(\mathbf{x} \mid \mathbf{y}) + \frac{1}{2}\mathbf{y}^{\mathrm{T}}\mathbf{L}\mathbf{y}\end{split}$$
 
-It is useful to parameterise this multivariate Gaussian so that it corresponds to the belief we can have about the image appearance. Whereas we are interested in bias fields, deformation fields or tissue probability maps, a common assumption is that images are smooth, *i.e.*, they do not show sharp edges and vary slowly. A way of enforcing such smoothness is by defining precision matrices ($\mathbf{L}$) based on differential operators, so that the regularisation term penalises spatial derivatives -- *i.e.*, gradients -- of the image.
+It is useful to parameterise this multivariate Gaussian so that it corresponds to the belief we can have about the image appearance. Whether we are interested in bias fields, deformation fields or tissue probability maps, a common assumption is that images are smooth, *i.e.*, they do not show sharp edges and vary slowly. A way of enforcing such smoothness is by defining precision matrices ($\mathbf{L}$) based on differential operators, so that the regularisation term penalises spatial derivatives -- *i.e.*, gradients -- of the image.
 
 Typically, assume that a matrix $\mathbf{K}$ allows to compute gradients of an image by using [finite differences](https://en.wikipedia.org/wiki/Finite_difference), *i.e.*, $\mathbf{K}\mathbf{y}$ returns the first derivatives of $\mathbf{y}$. Then $(\mathbf{K}\mathbf{y})^{\mathrm{T}}(\mathbf{K}\mathbf{y}) = \mathbf{y}^{\mathrm{T}}\mathbf{K}^{\mathrm{T}}\mathbf{K}\mathbf{y}$ returns the sum of square gradients of $\mathbf{y}$. We recognise the regularisation term in the previous objective function, with $\mathbf{L} = \mathbf{K}^{\mathrm{T}}\mathbf{K}$, which is postitive-definite by construction.
 
