@@ -16,7 +16,7 @@ It is useful to parameterise this multivariate Gaussian so that it corresponds t
 
 Typically, assume that a matrix $\mathbf{K}$ allows to compute gradients of an image by using [finite differences](https://en.wikipedia.org/wiki/Finite_difference), *i.e.*, $\mathbf{K}\mathbf{y}$ returns the first derivatives of $\mathbf{y}$. Then $(\mathbf{K}\mathbf{y})^{\mathrm{T}}(\mathbf{K}\mathbf{y}) = \mathbf{y}^{\mathrm{T}}\mathbf{K}^{\mathrm{T}}\mathbf{K}\mathbf{y}$ returns the sum of square gradients of $\mathbf{y}$. We recognise the regularisation term in the previous objective function, with $\mathbf{L} = \mathbf{K}^{\mathrm{T}}\mathbf{K}$, which is postitive-definite by construction.
 
-In this article, we describe a selection of regularisation "energies" used in SPM, which were presented in [Ashburner (2007)](https://doi.org/10.1016/j.neuroimage.2007.07.007). We provide their continuous and discrete form, show the equivalent spare matrices and generate random samples from the corresponding Gaussian distributions. All exemples use displacement fields, *i.e.*, images with several components (2 for 2D images, 3 for 3D images). They are color coded, so that all components can be seen at once, according to the following scale:
+In this article, we describe a selection of regularisation "energies" used in SPM, which were presented in [Ashburner (2007)](https://doi.org/10.1016/j.neuroimage.2007.07.007). We provide their continuous and discrete form, show the equivalent sparse matrices and generate random samples from the corresponding Gaussian distributions. All examples use displacement fields, *i.e.*, images with several components (2 for 2D images, 3 for 3D images). They are color coded, so that all components can be seen at once, according to the following scale:
 
 
 <figure>
@@ -117,7 +117,7 @@ Combining both regularisations encourages smooth and flat slopes. Here are a few
 Linear-Elastic energy
 ---------------------
 
-The membrane and bending energies allow to control the magnitude and smoothness of the image slope. When dealing with deformations, it might be interesting to include additional prior beliefs about the local geometry of the deformation, *i.e.*, the amount of zooms (or volume change) and shears that it embeds. The linear elastic energes is based on two terms: the first one penalises the symmetric part of the Jacobian (shears), while the other one penalises the divergence (zooms) of the deformation.
+The membrane and bending energies allow to control the magnitude and smoothness of the image slope. When dealing with deformations, it might be interesting to include additional prior beliefs about the local geometry of the deformation, *i.e.*, the amount of zooms (or volume change) and shears that it embeds. The linear elastic energy is based on two terms: the first one penalises the symmetric part of the Jacobian (shears), while the other one penalises the divergence (zooms) of the deformation.
 
 ### Symmetric part of the Jacobian (Shears)
 
@@ -160,6 +160,8 @@ Here are four samples obtained from prior distributions with a varying $\lambda$
 <figcaption><b>Figure 12.</b> Random samples obtained with an increasing penalty on zooms.</figcaption>
 </figure>
 
+This term penalises a very particular feature, the volume, without promoting smoothness. Images generated from this distribution can be compared to [Rubik's cubes](https://en.wikipedia.org/wiki/Rubik%27s_cube): they can be sheared at will but the volume of the cube is always preserved.
+
 ### Linear-Elastic
 
 Obviously, it doesn't make sense using each component separately. Here are samples generated from the combined linear-elastic distribution:
@@ -168,6 +170,7 @@ Obviously, it doesn't make sense using each component separately. Here are sampl
 <img src="{{site.baseurl}}/images/spatial-energies/le_rand.png" alt="Four random samples from the joint linear-elastic distribution." />
 <figcaption><b>Figure 13.</b> Random samples obtained with an increasing penalty on zooms and shears.</figcaption>
 </figure>
+
 
 ***
 
