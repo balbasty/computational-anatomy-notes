@@ -59,7 +59,7 @@ $$\mathcal{E} = \frac{\lambda}{2} \int_\Omega
 + \left[\frac{\partial v_y}{\partial y}(\mathbf{x})\right]^2
 \mathrm{d}\mathbf{x}$$
 
-For discrete images, this can be obtained by building a matrix that computes all possible first order finite differences. Such a matrix is shown in Figure 4.a for a 2D 5x5 input. We then multiply it with its transpose ($\mathbf{L} = \mathbf{K}^{\mathrm{T}}\mathbf{K}$), so that $\mathbf{v}^{\mathrm{T}}\mathbf{L}\mathbf{v}$ returns the sum of square finite differences. This matrix is shown in Figure 4.b.
+For discrete images, this can be obtained by building a matrix $\mathbf{J}$ that computes all possible first order finite differences. Such a matrix is shown in Figure 4.a for a 2D 5x5 input. We then multiply it with its transpose ($\mathbf{L} = \mathbf{J}^{\mathrm{T}}\mathbf{J}$), so that $\mathbf{v}^{\mathrm{T}}\mathbf{L}\mathbf{v}$ returns the sum of square finite differences. This matrix is shown in Figure 4.b.
 
 
 <figure>
@@ -67,7 +67,7 @@ For discrete images, this can be obtained by building a matrix that computes all
     <figcaption><b>Figure 4.</b> (a) Sparse matrix that allows computing Jacobians. (b) Precision matrix corresponding to a penalty on squared first derivatives.</figcaption>
 </figure>
 
-Here are four samples obtained from prior distributions with a varying $\lambda$ (10<sup>1</sup>, 10<sup>2</sup>, 10<sup>3</sup>, 10<sup>4</sup>)[^jitter]:
+Below are four samples obtained from prior distributions with a varying $\lambda$ (10<sup>1</sup>, 10<sup>2</sup>, 10<sup>3</sup>, 10<sup>4</sup>)[^jitter]:
 
 [^jitter]: A small penalty was added on absolute values to make the precision matrix well conditioned.
 
@@ -89,7 +89,7 @@ $$\mathcal{E} = \frac{\lambda}{2} \int_\Omega
 + 2\left[\frac{\partial^2 v_y}{\partial x \partial y}(\mathbf{x})\right]^2
 \mathrm{d}\mathbf{x}$$
 
-For discrete images, this can be obtained by building a matrix that computes all possible second order finite differences. Such a matrix is shown in Figure 6.a for a 2D 5x5 input. We then multiply it with its transpose ($\mathbf{L} = \mathbf{K}^{\mathrm{T}}\mathbf{K}$), so that $\mathbf{v}^{\mathrm{T}}\mathbf{L}\mathbf{v}$ returns the sum of square finite differences. This matrix is shown in Figure 6.b.
+For discrete images, this can be obtained by building a matrix that computes all possible second order finite differences. Such a matrix is shown in Figure 6.a for a 2D 5x5 input. We then multiply it with its transpose ($\mathbf{L} = \mathbf{H}^{\mathrm{T}}\mathbf{H}$), so that $\mathbf{v}^{\mathrm{T}}\mathbf{L}\mathbf{v}$ returns the sum of square finite differences. This matrix is shown in Figure 6.b.
 
 
 <figure>
@@ -108,7 +108,7 @@ Here are four samples obtained from prior distributions with a varying $\lambda$
 Membrane + Bending
 ------------------
 
-Combining both regularisations encourages smooth and flat slopes. Here are a few random samples:
+Combining both regularisations encourages smooth and flat slopes as illustrated by these random samples:
 <figure>
 <img src="{{site.baseurl}}/images/spatial-energies/mb_rand.png" alt="Four random samples from the membrane+bending distribution." />
 <figcaption><b>Figure 8.</b> Random samples obtained by combining the membrane and bending energies.</figcaption>
@@ -132,7 +132,7 @@ In discrete form, it can be obtained by multiplying the sparse "Jacobian operato
     <figcaption><b>Figure 9.</b> (a) Sparse matrix that allows computing the symmetric part of the Jacobian. (b) Precision matrix corresponding to a penalty on the linear-elastic energy's first component (shears).</figcaption>
 </figure>
 
-Here are four samples obtained from prior distributions with a varying $\lambda$ (10<sup>1</sup>, 10<sup>2</sup>, 10<sup>3</sup>, 10<sup>4</sup>)[^jitter]:
+As before, four samples were obtained from prior distributions with a varying $\lambda$ (10<sup>1</sup>, 10<sup>2</sup>, 10<sup>3</sup>, 10<sup>4</sup>)[^jitter]:
 
 <figure>
 <img src="{{site.baseurl}}/images/spatial-energies/symjac_rand.png" alt="Four random samples from the linear-elastic (symjac) distribution." />
