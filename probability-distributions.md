@@ -1,6 +1,6 @@
 ---
 layout:  page
-title:   Probability distribution
+title:   Probability distributions
 mathjax: true
 ---
 
