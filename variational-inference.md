@@ -135,11 +135,13 @@ $$\boxed{\ln q^\star_j(\mathbf{Z}_j) = \tilde{\mathbb{E}}_{\mathbf{Z}_{i \neq j}
 
 Consequently, all approximate log-posteriors $q_i$ can be optimised in turn by keeping the others fixed and computing the above expected model log-likelihood. This insures that the lower bound improved after every step, and *"convergence is guaranteed because bound is convex with respect to each of the factors"* according to [Bishop (2006)](https://www.springer.com/us/book/9780387310732), who references [Boyd and Vandenberghe (2004)](http://web.stanford.edu/~boyd/cvxbook/).
 
-However, this expected value might be tricky to calculate. There's usually two general cases:
+However, this expected value might be tricky to calculate. Ther are three general cases:
 
-- The posteriors $q_i$ are well parameterised thanks to the use of conjugate priors. When such priors are used, it insures that the posterior possess the same form and is thus entirely characterised by a few parameters. For example, if, in the generative model, one conditional probability $p(\mathbf{Z}_i \mid \mathbf{Z}_j)$ is a centred multivariate normal of precision matrix $\mathbf{Z}_j$, then choosing a Wishart distribution for $p(\mathbf{Z}_j)$ insures that $q_j(\mathbf{Z}_j)$ is also a Wishart distribution.
+- If a posterior $q_j$ is well parameterised thanks to the use of a conjugate prior, it insures that the posterior possesses the same form and is thus entirely characterised by a few parameters. For example, if, in the generative model, one conditional probability $p(\mathbf{Z}_i \mid \mathbf{Z}_j)$ is a centred multivariate normal of precision matrix $\mathbf{Z}_j$, then choosing a Wishart distribution for $p(\mathbf{Z}_j)$ insures that $q_j(\mathbf{Z}_j)$ is also a Wishart distribution.
 
-- A Laplace approximation is made for the posteriors, meaning that we suppose that $\tilde{q}_j(\mathbf{Z}_j) = \mathcal{N}\left(\mathbf{Z}_j \mid \boldsymbol{\mu}, \mathbf{A}^{-1}\right)$, where $\boldsymbol{\mu}$ is the maximum of the actual log-likelihood $\ln q_j$ and $\mathbf{A}$ is the Hessian of $\ln q_j$ w.r.t. $\mathbf{Z}_j$ at that maximum. Both values can then be found by numerical optimisation. This is very useful when the expectation of the model likelihood is calculable and differentiable at any point, but possesses a non-standard form. The use of Laplace approximation in variational frameworks is sometimes called variational Laplace (VL) in the literature.
+- Sometimes, we are not interested in the complete posterior of a variable, but only in its expected value (or higher order moments that are involved when computing the approximate posterior of the other variables according to the update scheme presented above). In this case, when the posterior has no known form, Monte Carlo sampling can be used to approximate these moments.
+
+- Finally, if we are mainly interested in the maximum value (or *mode*) of a posterior distribution, a Laplace approximation can be made, meaning that we suppose that $q_j(\mathbf{Z}_j) \approx \mathcal{N}\left(\mathbf{Z}_j \mid \boldsymbol{\mu}, \mathbf{A}^{-1}\right)$, where $\boldsymbol{\mu}$ is the maximum of the log-likelihood $\ln q_j$ and $\mathbf{A}$ is the Hessian of $\ln q_j$ w.r.t. $\mathbf{Z}_j$ about that maximum. Both values can then be found by numerical optimisation. This is very useful when the expectation of the model likelihood is calculable and differentiable at any point, but possesses a non-standard form. The use of Laplace approximation in variational frameworks is sometimes called variational Laplace (VL) in the literature.
 
 Note that using VL violates the assumptions of the variational framework and might thus lead to a biased estimation. This is something to keep in mind. In this VL framework, it it possible to find an approximate mean that only improves (instead of maximising) the posterior, as in the Generalised-EM (GEM) framework.
 
@@ -175,7 +177,7 @@ $$\boxed{\mathcal{L}(q) = \tilde{\mathbb{E}}_{\mathbf{Z}}\Big[ \ln p(\mathbf{X},
 
 This form is often simpler to calculate and allows tracking the lower bound to check its growth and convergence. If all the $q_i$ are parameterised, it may also be simpler to maximise this form of the lower bound in turn with respect to the parameters of each factor.
 
-In practice, if we full decompose the model likelihood in terms of known prior conditional probabilities, that we will write $p_j$, the above lower bound can be written
+In practice, if we fully decompose the model likelihood in terms of known prior conditional probabilities, that we will write $p_j$, the above lower bound can be written
 
 $$\boxed{\mathcal{L}(q) = \tilde{\mathbb{E}}_\mathbf{Z}\Big[\ln p(\mathbf{X} \mid \mathbf{Z})\Big] - \sum_j \tilde{\mathbb{E}}_{\setminus\mathbf{Z}_j}\Big[\mathrm{KL}\left( q_j |\middle| p_j \right)\Big]}$$
 
