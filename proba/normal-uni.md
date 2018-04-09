@@ -46,7 +46,7 @@ We list here the distributions that can be used as conjugate prior for the param
 
 
 | $\mu \mid \lambda$  | [Univariate Normal]({{site.baseurl}}/proba/normal-uni)              | $\mathcal{N}_\lambda$ |
-| $\lambda \mid \mu$  | [~~Gamma~~]({{site.baseurl}}/proba/gamma)                           | $\mathcal{G}_\mathcal{N}$ |
+| $\lambda \mid \mu$  | [Gamma]({{site.baseurl}}/proba/gamma)                               | $\mathcal{G}_\mathcal{N}$ |
 | $\sigma^2 \mid \mu$ | [~~Inverse-Gamma~~]({{site.baseurl}}/proba/gamma-inv)               | $\mathrm{Inv-}\mathcal{G}_\mathcal{N}$ |
 | $\mu, \lambda$      | [~~Normal-Gamma~~]({{site.baseurl}}/proba/normal-gamma)             | $\mathcal{N}\mathcal{G}$ |
 | $\mu, \sigma^2$     | [~~Normal-Inverse-Gamma~~]({{site.baseurl}}/proba/normal-gamma-inv) | $\mathcal{N}\mathrm{Inv-}\mathcal{G}$ |

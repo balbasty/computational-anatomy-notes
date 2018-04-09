@@ -10,7 +10,7 @@ Univariate Normal and conjugates
 --------------------------------
 
 - [Univariate Normal]({{site.baseurl}}/proba/normal-uni)
-- [~~Gamma~~]({{site.baseurl}}/proba/gamma)
+- [Gamma]({{site.baseurl}}/proba/gamma)
 - [~~Inverse-Gamma~~]({{site.baseurl}}/proba/gamma-inv)
 - [~~Normal-Gamma~~]({{site.baseurl}}/proba/normal-gamma)
 - [~~Normal-Inverse-Gamma~~]({{site.baseurl}}/proba/normal-gamma-inv)
@@ -18,7 +18,7 @@ Univariate Normal and conjugates
 Multivariate Normal and conjugates
 ---------------------------------
 
-- [~~Multivariate Normal~~]({{site.baseurl}}/proba/normal-multi)
+- [Multivariate Normal]({{site.baseurl}}/proba/normal-multi)
 - [~~Wishart~~]({{site.baseurl}}/proba/wishart)
 - [~~Inverse-Wishart~~]({{site.baseurl}}/proba/wishart-inv)
 - [~~Normal-Wishart~~]({{site.baseurl}}/proba/normal-wishart)
