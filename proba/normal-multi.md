@@ -44,9 +44,9 @@ Let $(\mathbf{x}_n)$ be a set of observed realisations from a multivariate Norma
 We list here the distributions that can be used as conjugate prior for the parameters of a multivariate Normal distribution:
 
 
-| $\boldsymbol\mu \mid \boldsymbol\Lambda$ | [Multivariate Normal]({{site.baseurl}}/proba/normal-multi)                  | $\mathcal{N}_{\boldsymbol\Lambda}$     |
-| $\boldsymbol\Lambda \mid \boldsymbol\mu$ | [~~Wishart~~]({{site.baseurl}}/proba/wishart)                               | $\mathcal{W}_\mathcal{N}$              |
-| $\boldsymbol\Sigma \mid \boldsymbol\mu$  | [~~Inverse-Wishart~~]({{site.baseurl}}/proba/wishart-inverse)               | $\mathrm{Inv-}\mathcal{W}_\mathcal{N}$ |
+| $\boldsymbol\mu \mid \boldsymbol\Lambda$ | [Multivariate Normal]({{site.baseurl}}/proba/normal-multi)              | $\mathcal{N}_{\boldsymbol\Lambda}$     |
+| $\boldsymbol\Lambda \mid \boldsymbol\mu$ | [Wishart]({{site.baseurl}}/proba/wishart)                               | $\mathcal{W}_\mathcal{N}$              |
+| $\boldsymbol\Sigma \mid \boldsymbol\mu$  | [Inverse-Wishart]({{site.baseurl}}/proba/wishart-inverse)               | $\mathrm{Inv-}\mathcal{W}_\mathcal{N}$ |
 | $\boldsymbol\mu, \boldsymbol\Lambda$     | [~~Normal-Wishart~~]({{site.baseurl}}/proba/normal-wishart)                 | $\mathcal{NW}$                         |
 | $\boldsymbol\mu, \boldsymbol\Sigma$      | [~~Normal-Inverse-Wishart~~]({{site.baseurl}}/proba/normal-wishart-inverse) | $\mathcal{N}\mathrm{Inv-}\mathcal{W}$  |
 

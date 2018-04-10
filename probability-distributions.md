@@ -19,8 +19,8 @@ Multivariate Normal and conjugates
 ---------------------------------
 
 - [Multivariate Normal]({{site.baseurl}}/proba/normal-multi)
-- [~~Wishart~~]({{site.baseurl}}/proba/wishart)
-- [~~Inverse-Wishart~~]({{site.baseurl}}/proba/wishart-inv)
+- [Wishart]({{site.baseurl}}/proba/wishart)
+- [Inverse-Wishart]({{site.baseurl}}/proba/wishart-inv)
 - [~~Normal-Wishart~~]({{site.baseurl}}/proba/normal-wishart)
 - [~~Normal-Inverse-Wishart~~]({{site.baseurl}}/proba/normal-wishart-inv)
 
@@ -71,6 +71,6 @@ Exponential family
 
 ***
 
-*Created by Yaël Balbastre on 6 April 2018. Last edited on 6 April 2018.*
+*Created by Yaël Balbastre on 6 April 2018. Last edited on 9 April 2018.*
 
 ***

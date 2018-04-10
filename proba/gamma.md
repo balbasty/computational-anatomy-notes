@@ -233,3 +233,9 @@ $$\max_\lambda \mathcal{G}_\alpha\left(\beta \mid \beta_0, n_0\right) = \beta_0\
 | $\beta$   | $\frac{n_0\hat{\alpha}}{\beta_0}$ |
 | $n_0$     | $\frac{\alpha}{\hat{\alpha}}$     |
 | $\beta_0$ | $\frac{\alpha}{\beta}$            |
+
+***
+
+*Created by Yaël Balbastre on 9 April 2018. Last edited on 10 April 2018.*
+
+***
