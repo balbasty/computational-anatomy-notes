@@ -30,14 +30,16 @@ $$\begin{split}
     & = \frac{\boldsymbol{\Psi}}{\nu-K-1}
     \\
     \mathbb{E}\left[\mathbf{S}^{-1}\right]
-    & = \frac{\boldsymbol{\Psi}^{-1}}{\nu}
+    & = \left(\nu\boldsymbol{\Psi}\right)^{-1}
     \\
     \mathbb{E}\left[\ln\det\mathbf{S}\right]
-    & = -\left(\psi_K\left(\frac{\nu}{2}\right) + K\ln 2 + \ln\det\boldsymbol\Psi\right)
+    & = -\left(\psi_K\left(\frac{\nu}{2}\right) + K\ln 2 - \ln\det\boldsymbol\Psi\right)
     \\
     \mathbb{V}\left[\ln\det\mathbf{S}\right]
     & = \sum_{i=1}^K \psi_1\left(\frac{\nu+1-i}{2}\right)
 \end{split}$$
+
+where $\Gamma_K$ is the [multivariate gamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Multivariate_Gamma_function), $\psi_K$ is the [multivariate digamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Multivariate_gamma_function#Derivatives) and $\psi_1$ is the [trigamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Trigamma_function).
 
 This distribution always has a mode:
 
@@ -96,7 +98,7 @@ $$\begin{split}
     - \frac{\nu_0 + K + 1}{2}\psi_K\left(\frac{\nu_1}{2}\right)
     \\
     H\left(\boldsymbol{\Psi}_1, \nu_1 \right)
-    & = -\frac{2\nu_1+K+1}{2}\ln\det\boldsymbol{\Psi}_1
+    & = \frac{K+1}{2}\ln\det\boldsymbol{\Psi}_1
     + \frac{K}{2\nu_1}
     \\
     & \phantom{ {}={} }
@@ -107,7 +109,7 @@ $$\begin{split}
 
 $$\boxed{\begin{split}
     \mathrm{KL}\left(\boldsymbol{\Psi}_1, \nu_1 \middle\| \boldsymbol{\Psi}_0, \nu_0\right)
-    ={} & -\frac{\nu_0}{2}\ln\det\boldsymbol{\Psi}_0 + \frac{2\nu_1 - \nu_0}{2}\ln\det\boldsymbol{\Psi}_1
+    ={} & -\frac{\nu_0}{2}\ln\det\boldsymbol{\Psi}_0 + \frac{\nu_0 - \nu_1}{2}\ln\det\boldsymbol{\Psi}_1
     + \frac{1}{2\nu_1}\left(\mathrm{Tr}\left(\boldsymbol{\Psi}_0\boldsymbol{\Psi}_1^{-1}\right) - K\right)\\
     & + \frac{\nu_1 - \nu_0}{2}\psi_K\left(\frac{\nu_1}{2}\right)
     + \ln\Gamma_K\left(\frac{\nu_0}{2}\right)
@@ -175,17 +177,7 @@ There is no closed form solution for $\hat{\nu}$, but an approximate solution ca
 
 The KL divergence becomes
 
-$$\boxed{\begin{split}
-    \mathrm{KL}\left(\boldsymbol{\Sigma}_1, \nu_1 \middle\| \boldsymbol{\Sigma}_0, \nu_0\right)
-    ={} & -\frac{\nu_0}{2}\ln\det\boldsymbol{\Psi}_0 + \frac{2\nu_1 - \nu_0}{2}\ln\det\boldsymbol{\Psi}_1
-    + \frac{1}{2\nu_1}\left(\frac{\nu_0-K-1}{\nu_1-K-1}\mathrm{Tr}\left(\boldsymbol{\Psi}_0\boldsymbol{\Psi}_1^{-1}\right) - K\right)\\
-    & -\frac{\nu_0}{2}K\ln(\nu_0-K-1) + \frac{2\nu_1 - \nu_0}{2}K\ln(\nu_1-K-1) \\
-    & + \frac{\nu_1 - \nu_0}{2}\psi_K\left(\frac{\nu_1}{2}\right)
-    + \ln\Gamma_K\left(\frac{\nu_0}{2}\right)
-    - \ln\Gamma_K\left(\frac{\nu_1}{2}\right)
-\end{split}}$$
-
-*Needs to be checked*
+TODO
 
 ***
 

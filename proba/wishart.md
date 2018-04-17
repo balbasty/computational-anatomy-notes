@@ -38,6 +38,8 @@ $$\begin{align*}
     & = \sum_{i=1}^K \psi_1\left(\frac{\nu+1-i}{2}\right)
 \end{align*}$$
 
+where $\Gamma_K$ is the [multivariate gamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Multivariate_Gamma_function), $\psi_K$ is the [multivariate digamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Multivariate_gamma_function#Derivatives) and $\psi_1$ is the [trigamma function<sup>[wiki]</sup>](https://en.wikipedia.org/wiki/Trigamma_function).
+
 This distribution has a mode only if $\nu \geqslant K + 1$:
 
 $$\max_{\mathbf{A}} \mathcal{W}_K\left(\mathbf{A} \mid \mathbf{V}, \nu\right) = (\nu-K-1)\mathbf{V}$$
@@ -116,9 +118,9 @@ $$\boxed{\begin{split}
 | **Specialisation** |
 | Exponential | $\mathrm{Exp}(\lambda) = \mathcal{W}\left(\frac{1}{2\lambda}, 2\right)$ |
 | Chi-squared | $\chi^2(\nu) = \mathcal{G}\left(1, \nu\right)$ |
-| Gamma       | $\mathcal{G}(\alpha, \beta) = \mathcal{W}\left(\frac{1}{2\beta}, 2\alpha\right)$ |
+| [Gamma]({{site.baseurl}}/proba/gamma)       | $\mathcal{G}(\alpha, \beta) = \mathcal{W}\left(\frac{1}{2\beta}, 2\alpha\right)$ |
 | **Power** |
-| Inverse-Wishart | $\mathbf{X} \sim \mathcal{W}(\mathbf{V}, \nu) \Rightarrow \mathbf{X}^{-1} \sim \mathcal{W}^{-1}\left(\mathbf{V}^{-1}, \nu\right)$ |
+| [Inverse-Wishart]({{site.baseurl}}/proba/wishart-inv) | $\mathbf{X} \sim \mathcal{W}(\mathbf{V}, \nu) \Rightarrow \mathbf{X}^{-1} \sim \mathcal{W}^{-1}\left(\mathbf{V}^{-1}, \nu\right)$ |
 
 "Normal precision matrix conjugate" parameterisation
 ----------------------------------------------------
