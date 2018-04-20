@@ -172,8 +172,26 @@ Obviously, it doesn't make sense using each component separately. Here are sampl
 </figure>
 
 
+Boundary conditions
+-------------------
+
+All these energies are based on spatial derivatives, which must be computed at any point, even next to the edges of the field of view. There are different ways of dealing with derivatives at the boundary, which change greatly the range of possible fields:
+
+- Circulant boundary conditions are based on the idea that the left and right edges are the same (the bottom and top edges, too, as well as any opposite edges). As such, the most left voxel is a neighbour of the most right one, and the image can be seen as wrapping around the boundaries. This means that, to be likeliy, these voxels must have similar values.
+
+- Neumann boundary conditions force first-order spatial derivatives to be zero at the boundary. This is obtained by assuming that the image is "mirrored" around the edges.
+
+- Dirichlet boundary conditons force the field values to be zero at the boundary. This is obtained by assuming voxels outside of the field of view to be zero.
+
+Those three conditions are illustrated in the figure below. Three random samples (within dotted edges) are shown, each with different boundary conditions. The "virtual" values outside of the field of view are also shown (within solid edges).
+
+<figure>
+<img src="{{site.baseurl}}/images/spatial-energies/boundaries.png" alt="Three random samples with different boundary conditions." />
+<figcaption><b>Figure 14.</b> Three random samples with different boundary conditions. Voxel values outside of the field of view are also shown.</figcaption>
+</figure>
+
 ***
 
-*Created by Yaël Balbastre on 3 April 2018. Last edited on 4 April 2018.*
+*Created by Yaël Balbastre on 3 April 2018. Last edited on 20 April 2018.*
 
 ***
