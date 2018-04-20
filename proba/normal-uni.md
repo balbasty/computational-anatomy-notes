@@ -86,8 +86,8 @@ $$\boxed{\mathrm{KL}\left(\mu_1, \lambda_1 ~\middle\|~ \mu_0, \lambda_0\right)
 = \frac{1}{2}\left(\frac{\lambda_0}{\lambda_1} - \ln\frac{\lambda_0}{\lambda_1} +  \lambda_0(\mu_1 - \mu_0)^2 - 1\right)}$$
 
 
-"Normal mean conjugate" parameterisation
-----------------------------------------
+Normal mean conjugate" parameterisation <a name="normal-mean-conj"></a>
+-----------------------------------------------------------------------
 
 When the Normal distribution is used as a conjugate prior for the mean of another Normal distribution with known precision $\lambda$, it makes sense to parameterise it in terms of its expected value, $\mu_0$, and degrees of freedom, $n_0$:
 

@@ -118,8 +118,8 @@ $$\boxed{\begin{split}
 | Inverse-Gamma | $x \sim \mathcal{G}(\alpha, \beta) \Rightarrow \frac{1}{x} \sim \mathrm{Inv-}\mathcal{G}\left(\alpha, \frac{1}{\beta}\right)$ |
 | Generalised Gamma | $x \sim \mathcal{G}(\alpha, \beta) \Rightarrow x^q \sim \mathcal{G}^{\left(1/q\right)}\left(\frac{\alpha}{q}, \beta^q\right)$ | q > 0 |
 
-"Univariate Normal precision conjugate" parameterisation
---------------------------------------------------------
+Univariate Normal precision conjugate" parameterisation <a name="normal-prec-conj"></a>
+---------------------------------------------------------------------------------------
 
 When the Gamma distribution is used as a conjugate prior for the precision parameter of a univariate Normal distribution, it is easier to parameterise it in terms of its expected value, $\lambda_0$, and degrees of freedom, $n_0$:
 
@@ -161,8 +161,8 @@ $$\boxed{\begin{split}\mathrm{KL}\left(\lambda_1, n_1 \middle\| \lambda_0, n_0\r
 | $n$       | $2\alpha$              |
 | $\lambda$ | $\frac{\alpha}{\beta}$ |
 
-"Multivariate Normal precision scale conjugate" parameterisation
-----------------------------------------------------------------
+"Multivariate Normal precision scale conjugate" parameterisation <a name="normal-scalprec-conj"></a>
+----------------------------------------------------------------------------------------------------
 
 When the Gamma distribution is used as a conjugate prior for the scale of the precision matrix of a multivariate Normal distribution, it is easier to parameterise it in terms of its expected value, $\lambda_0$, and degrees of freedom, $n_0$:
 
@@ -205,8 +205,8 @@ $$\boxed{\begin{split}
 | $n$       | $\frac{2\alpha}{K}$              |
 | $\lambda$ | $\frac{\alpha}{\beta}$ |
 
-"Gamma rate" parameterisation
------------------------------
+"Gamma rate" parameterisation <a name="gamma-rate-conj"></a>
+------------------------------------------------------------
 
 When the Gamma distribution is used as a conjugate prior for the rate parameter of another Gamma distribution, it is easier to parameterise it in terms of its expected value, $\beta_0$, and degrees of freedom, $n_0$:
 
