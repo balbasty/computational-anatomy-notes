@@ -1,6 +1,6 @@
 ---
 layout:  page
-title:   Varitional inference
+title:   Variational inference
 mathjax: true
 ---
 
